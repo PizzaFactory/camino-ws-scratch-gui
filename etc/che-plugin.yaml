@@ -1,0 +1,28 @@
+version: 1.0.0
+type: Che Editor
+name: scratch-gui
+id: org.eclipse.che.editor.scratch-gui
+title: Scratch3(GUI) for Eclipse Che
+description: Scratch3 GUI
+icon: https://upload.wikimedia.org/wikipedia/commons/d/d6/Scratch_Logo.svg
+endpoints:
+ -  name: "ws"
+    public: true
+    targetPort: 80
+    attributes:
+      protocol: http
+      type: ide
+      secure: true
+      cookiesAuthEnabled: true
+      discoverable: false
+containers:
+ - name: scratch-gui
+   image: leejoneshane/docker-scratch3
+   env: []
+   volumes:
+       - mountPath: "/data"
+         name: data
+   ports:
+       - exposedPort: 80
+   memory-limit: "512M"
+   memoryLimit: "512M"
